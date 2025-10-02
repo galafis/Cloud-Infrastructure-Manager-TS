@@ -2,6 +2,10 @@
 
 ## English
 
+### 🖼️ Hero Image
+
+![Cloud Infrastructure Manager Hero Image](assets/images/hero_image.png)
+
 ### 🚀 Overview
 Cloud infrastructure management platform with automated deployment and monitoring
 
@@ -77,6 +81,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Português
 
+### 🖼️ Imagem Hero
+
+![Imagem Hero do Gerenciador de Infraestrutura em Nuvem](assets/images/hero_image.png)
+
 ### 🚀 Visão Geral
 Cloud infrastructure management platform with automated deployment and monitoring
 
@@ -149,3 +157,4 @@ Descreva aqui o conteúdo desta seção.
 ## 💻 Uso
 
 Descreva aqui o conteúdo desta seção.
+
