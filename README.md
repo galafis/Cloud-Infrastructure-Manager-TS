@@ -2,27 +2,55 @@
 
 ## English
 
-### 🖼️ Hero Image
+### Hero Image
 
 ![Cloud Infrastructure Manager Hero Image](assets/images/hero_image.png)
 
-### 🚀 Overview
-Cloud infrastructure management platform with automated deployment and monitoring
+### Overview
 
-This project demonstrates professional TypeScript development skills with modern best practices, clean code architecture, and industry-standard implementations.
+Cloud infrastructure management platform with automated deployment and monitoring, built with TypeScript for type safety and maintainability.
 
-### 🛠️ Technology Stack
-TypeScript, AWS, cloud infrastructure, DevOps, automation
+This project provides an enterprise-grade system for managing cloud resources across multiple providers (AWS, Azure, GCP), automating deployment pipelines, tracking infrastructure health in real time, and dispatching alerts when thresholds are breached.
 
-### ⚡ Features
-- Professional code architecture
-- Modern development practices
-- Comprehensive error handling
-- Performance optimized
-- Well-documented codebase
-- Industry-standard patterns
+### Architecture
 
-### 🏃‍♂️ Quick Start
+The diagram below illustrates how the system flows from configuration through provider abstraction, deployment, monitoring, and alerting.
+
+```mermaid
+flowchart TD
+    A[Configuration Layer\ntsconfig / env vars / secrets] --> B[Provider Abstraction\nCloudInfrastructureSystem]
+    B --> C1[AWS\nEC2 · S3 · Lambda · RDS]
+    B --> C2[Azure\nVM · Blob · Functions · SQL]
+    B --> C3[GCP\nCompute · Storage · Run · BigQuery]
+    C1 --> D[Deployment Engine\nbatch processing · retry logic · rollback]
+    C2 --> D
+    C3 --> D
+    D --> E[Monitoring\nhealth checks · metrics · insights]
+    E --> F[Alerts\nthreshold analysis · recommendations · export]
+```
+
+### Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Language | TypeScript 5.x |
+| Runtime | Node.js 20 LTS |
+| Cloud | AWS · Azure · GCP |
+| Build | tsc · npm scripts |
+| Patterns | Async/Await · Interfaces · Generics |
+
+### Features
+
+- Provider-agnostic abstraction layer for AWS, Azure and GCP
+- Configurable batch processing with timeout and retry logic
+- Real-time infrastructure health monitoring and metrics collection
+- Insight generation with statistical analysis over resource data
+- Actionable recommendations based on usage patterns
+- Type-safe data models via TypeScript interfaces
+- Clean export interface for downstream pipeline integration
+- Comprehensive error handling with structured logging
+
+### Quick Start
 
 ```bash
 # Clone the repository
@@ -31,10 +59,17 @@ git clone https://github.com/galafis/Cloud-Infrastructure-Manager-TS.git
 # Navigate to project directory
 cd Cloud-Infrastructure-Manager-TS
 
-# Follow language-specific setup instructions below
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Run the application
+npm start
 ```
 
-### 📦 Installation & Setup
+### Installation & Setup
 
 ```bash
 # Install dependencies
@@ -47,13 +82,33 @@ npm run build
 npm start
 ```
 
-### 🎯 Use Cases
-- Professional development portfolio
-- Learning modern TypeScript practices
-- Code reference and examples
-- Enterprise-grade implementations
+To customise system behaviour, override the default configuration at initialisation:
 
-### 📊 Project Structure
+```typescript
+import { CloudInfrastructureSystem } from './src';
+
+const manager = new CloudInfrastructureSystem();
+
+await manager.initialize({
+    batchSize: 500,      // records per processing batch
+    timeout: 60000,      // request timeout in milliseconds
+    retryAttempts: 5     // number of retry attempts on failure
+});
+
+const results = await manager.processData();
+console.log(results);
+```
+
+### Use Cases
+
+- Multi-cloud infrastructure lifecycle management
+- Automated deployment pipeline orchestration
+- Infrastructure cost and usage analysis
+- Threshold-based alerting and incident recommendations
+- Enterprise DevOps workflow integration
+
+### Project Structure
+
 ```
 Cloud-Infrastructure-Manager-TS/
 ├── README.md
@@ -65,13 +120,16 @@ Cloud-Infrastructure-Manager-TS/
 └── src/
 ```
 
-### 🤝 Contributing
+### Contributing
+
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-### 📄 License
+### License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-### 👨‍💻 Author
+### Author
+
 **Gabriel Demetrios Lafis**
 - Data Scientist & Engineer
 - Systems Developer & Analyst
@@ -81,27 +139,55 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Português
 
-### 🖼️ Imagem Hero
+### Imagem Hero
 
 ![Imagem Hero do Gerenciador de Infraestrutura em Nuvem](assets/images/hero_image.png)
 
-### 🚀 Visão Geral
-Cloud infrastructure management platform with automated deployment and monitoring
+### Visão Geral
 
-Este projeto demonstra habilidades profissionais de desenvolvimento em TypeScript com práticas modernas, arquitetura de código limpo e implementações padrão da indústria.
+Plataforma de gerenciamento de infraestrutura em nuvem com deployment automatizado e monitoramento em tempo real, desenvolvida em TypeScript para garantir segurança de tipos e facilidade de manutenção.
 
-### 🛠️ Stack Tecnológica
-TypeScript, AWS, cloud infrastructure, DevOps, automation
+Este projeto fornece um sistema de nível empresarial para gerenciar recursos em múltiplos provedores de nuvem (AWS, Azure, GCP), automatizar pipelines de deployment, acompanhar a saúde da infraestrutura em tempo real e disparar alertas quando limites configurados são ultrapassados.
 
-### ⚡ Funcionalidades
-- Arquitetura de código profissional
-- Práticas modernas de desenvolvimento
-- Tratamento abrangente de erros
-- Otimizado para performance
-- Base de código bem documentada
-- Padrões da indústria
+### Arquitetura
 
-### 🏃‍♂️ Início Rápido
+O diagrama abaixo ilustra o fluxo do sistema desde a configuração, passando pela abstração de provedores, deployment, monitoramento e alertas.
+
+```mermaid
+flowchart TD
+    A[Camada de Configuração\ntsconfig / variáveis de ambiente / secrets] --> B[Abstração de Provedores\nCloudInfrastructureSystem]
+    B --> C1[AWS\nEC2 · S3 · Lambda · RDS]
+    B --> C2[Azure\nVM · Blob · Functions · SQL]
+    B --> C3[GCP\nCompute · Storage · Run · BigQuery]
+    C1 --> D[Motor de Deployment\nprocessamento em lotes · retry · rollback]
+    C2 --> D
+    C3 --> D
+    D --> E[Monitoramento\nverificações de saúde · métricas · insights]
+    E --> F[Alertas\nanálise de limites · recomendações · exportação]
+```
+
+### Stack Tecnológica
+
+| Camada | Tecnologias |
+|---|---|
+| Linguagem | TypeScript 5.x |
+| Runtime | Node.js 20 LTS |
+| Nuvem | AWS · Azure · GCP |
+| Build | tsc · npm scripts |
+| Padrões | Async/Await · Interfaces · Generics |
+
+### Funcionalidades
+
+- Camada de abstração agnóstica para AWS, Azure e GCP
+- Processamento em lotes configurável com timeout e lógica de retry
+- Monitoramento em tempo real da saúde da infraestrutura e coleta de métricas
+- Geração de insights com análise estatística sobre dados de recursos
+- Recomendações acionáveis baseadas em padrões de uso
+- Modelos de dados com tipagem forte via interfaces TypeScript
+- Interface de exportação limpa para integração com pipelines downstream
+- Tratamento abrangente de erros com logging estruturado
+
+### Início Rápido
 
 ```bash
 # Clone o repositório
@@ -110,10 +196,17 @@ git clone https://github.com/galafis/Cloud-Infrastructure-Manager-TS.git
 # Navegue para o diretório do projeto
 cd Cloud-Infrastructure-Manager-TS
 
-# Siga as instruções de configuração específicas da linguagem abaixo
+# Instale as dependências
+npm install
+
+# Construa o projeto
+npm run build
+
+# Execute a aplicação
+npm start
 ```
 
-### 📦 Instalação e Configuração
+### Instalação e Configuração
 
 ```bash
 # Instale as dependências
@@ -126,19 +219,54 @@ npm run build
 npm start
 ```
 
-### 🎯 Casos de Uso
-- Portfólio de desenvolvimento profissional
-- Aprendizado de práticas modernas em TypeScript
-- Referência de código e exemplos
-- Implementações de nível empresarial
+Para personalizar o comportamento do sistema, sobrescreva a configuração padrão na inicialização:
 
-### 🤝 Contribuindo
+```typescript
+import { CloudInfrastructureSystem } from './src';
+
+const manager = new CloudInfrastructureSystem();
+
+await manager.initialize({
+    batchSize: 500,      // registros por lote de processamento
+    timeout: 60000,      // timeout em milissegundos
+    retryAttempts: 5     // número de tentativas em caso de falha
+});
+
+const results = await manager.processData();
+console.log(results);
+```
+
+### Casos de Uso
+
+- Gerenciamento do ciclo de vida de infraestrutura multi-cloud
+- Orquestração de pipelines de deployment automatizados
+- Análise de custo e uso de infraestrutura em nuvem
+- Alertas baseados em limites e recomendações de incidentes
+- Integração com fluxos de trabalho DevOps empresariais
+
+### Estrutura do Projeto
+
+```
+Cloud-Infrastructure-Manager-TS/
+├── README.md
+├── LICENSE
+├── main.ts
+├── package.json
+├── tsconfig.json
+├── dist/
+└── src/
+```
+
+### Contribuindo
+
 Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
 
-### 📄 Licença
+### Licença
+
 Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
 
-### 👨‍💻 Autor
+### Autor
+
 **Gabriel Demetrios Lafis**
 - Cientista e Engenheiro de Dados
 - Desenvolvedor e Analista de Sistemas
@@ -146,15 +274,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para d
 
 ---
 
-⭐ **Se este projeto foi útil para você, considere dar uma estrela!**
-
-
-## 📋 Descrição
-
-Descreva aqui o conteúdo desta seção.
-
-
-## 💻 Uso
-
-Descreva aqui o conteúdo desta seção.
-
+Se este projeto foi útil para você, considere dar uma estrela!
